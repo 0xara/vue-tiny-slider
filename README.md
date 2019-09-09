@@ -490,6 +490,105 @@ slider.events.off('transitionEnd', customizedFunction);
 ```
 *[top↑](#tiny-slider-2)*
 
+### Vue Example
+
+```html
+    <slider 
+    ref="tinySlider"
+    :options="options"
+    @transitionStart="handleTransitionStart"
+    @transitionEnd="handleTransitionEnd"
+    @newBreakpointStart="handleNewBreakpointStart"
+    @newBreakpointEnd="handleNewBreakpointEnd"
+    @touchStart="handleTouchStart"
+    @touchMove="handleTouchMove"
+    @touchEnd="handleTouchEnd"
+    @dragStart="handleDragStart"
+    @dragMove="handleDragMove"
+    @dragEnd="handleDragEnd"
+    >
+        <div>
+            <img src="https://placeimg.com/460/306/tech/sepia" alt="" width="100%">
+        </div>
+        <div>
+            <img src="https://placeimg.com/460/306/animals" alt="" width="100%">
+        </div>
+        <div>
+            <img src="https://placeimg.com/460/306/tech" alt="" width="100%">
+        </div>
+        <div>
+            <img src="https://placeimg.com/460/306/people" alt="" width="100%">
+        </div>
+        <div>
+            <img src="https://placeimg.com/460/306/arch" alt="" width="100%">
+        </div>
+        <div>
+            <img src="https://placeimg.com/460/306/people" alt="" width="100%">
+        </div>
+        <div>
+            <img src="https://placeimg.com/460/306/animal" alt="" width="100%">
+        </div>
+</slider>
+```
+
+```javascript
+new Vue({
+    data: {
+    	options: { 
+    		items: 3,
+    		loop: true,
+    		slideBy: 'page',
+    		mouseDrag: true,
+    		speed: 400,
+    		nav:true,
+    		autoplay: true,
+    		autoplayHoverPause: true,
+    		axis: 'vertical'  
+    	}
+    },
+    
+    methods:{
+    	next() {
+    		this.$refs.tinySlider.next();
+    	},
+    	prev() {
+    		this.$refs.tinySlider.prev();
+    	},
+    	handleTransitionStart(info) {
+    	    console.log(info)	
+    	},
+        handleTransitionEnd(info) {
+    	    console.log(info)	
+        },
+        handleNewBreakpointStart(info) {
+    	    console.log(info)	
+        },
+        handleNewBreakpointEnd(info) {
+    	    console.log(info)	
+        },
+        handleTouchStart(info) {
+    	    console.log(info)	
+        },
+        handleTouchMove(info) {
+    	    console.log(info)	
+        },
+        handleTouchEnd(info) {
+    	    console.log(info)	
+        },
+        handleDragStart(info) {
+    	    console.log(info)	
+        },
+        handleDragMove(info) {
+    	    console.log(info)	
+        },
+        handleDragEnd(info) {
+    	    console.log(info)	
+        },
+    }
+})
+```
+
+
 #### Fallback
 ```css
 .no-js .your-slider { overflow-x: auto; }

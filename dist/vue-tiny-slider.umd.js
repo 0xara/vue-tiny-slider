@@ -31,7 +31,8 @@
 				return this.$options.slider;
 			},
 			create: function create() {
-				var slider = tinySlider.tns(_extends({ container: this.$el }, this.options));
+				this.$options.slider = tinySlider.tns(_extends({ container: this.$el }, this.options));
+				var slider = this.slider();
 				slider.events.on('indexChanged', this.onIndexChanged);
 				slider.events.on('transitionStart', this.onTransitionStart);
 				slider.events.on('transitionEnd', this.onTransitionEnd);
@@ -79,10 +80,16 @@
 				this.slider().goTo(index);
 			},
 			getInfo: function getInfo() {
-				this.slider().getInfo();
+				return this.slider().getInfo();
 			},
 			currentSlide: function currentSlide() {
 				return this.getInfo().displayIndex;
+			},
+			pageCount: function pageCount() {
+				return this.getInfo().pages;
+			},
+			slideCount: function slideCount() {
+				return this.getInfo().slideCount;
 			},
 
 

@@ -31,7 +31,8 @@ export default {
 			return this.$options.slider;
         },
 		create() {
-			const slider = tns({ container: this.$el, ...this.options });
+			this.$options.slider = tns({ container: this.$el, ...this.options });
+			const slider = this.slider();
 			slider.events.on('indexChanged', this.onIndexChanged);
 			slider.events.on('transitionStart', this.onTransitionStart);
 			slider.events.on('transitionEnd', this.onTransitionEnd);
@@ -79,10 +80,16 @@ export default {
 			this.slider().goTo(index);
 		},
 		getInfo() {
-			this.slider().getInfo();
+			return this.slider().getInfo();
 		},
 		currentSlide() {
 			return this.getInfo().displayIndex;
+		},
+		pageCount() {
+			return this.getInfo().pages;
+		},
+		slideCount() {
+			return this.getInfo().slideCount;
 		},
 
 		// Events
